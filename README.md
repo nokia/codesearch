@@ -1,12 +1,12 @@
 # Code search
 
-This project contains the code to reproduce the experiments in the paper [Neural Code Search Revisited: Enhancing Code Snippet Retrieval through Natural Language Intent](https://arxiv.org/abs/2008.12193), which will be made available soon. It implements retrieval systems for annotated code snippets: pairs of a code snippet and a short natural language description. We provide easy access to pretrained models and the PACS benchmarks that we used to evaluate them.
+This project contains the code to reproduce the experiments in the paper [Neural Code Search Revisited: Enhancing Code Snippet Retrieval through Natural Language Intent](https://arxiv.org/abs/2008.12193), which will be made available soon. It implements retrieval systems for annotated code snippets: pairs of a code snippet and a short natural language description. Our pretrained models and datasets are hosted on Zenodo (https://zenodo.org/record/4001602). The models and datasets will be downloaded automatically when calling `load_model`, `load_snippet_collection`, etc. (see the code examples below).
 
 In addition, the project also implements some *code-only* retrieval models (BM25, NCS, UNIF) for snippet collections that do not come with descriptions.
 
 The experiments in the paper are done on Python snippets, but the code preprocessing currently also supports java, javascript, and bash.
 
-The project is developed by a research team in the [Application Platforms and Software Systems Lab](https://www.bell-labs.com/our-research/areas/applications-and-platforms/) of [Nokia Bell Labs](https://www.bell-labs.com/).
+The project is developed by a research team in the [Application Platforms and Software Systems Lab](https://www.bell-labs.com/our-research/areas/applications-and-platforms/) of [Nokia Bell Labs](https://www.bell-labs.com/). 
 
 ## Installation
 
