@@ -30,7 +30,10 @@ def init_nlp():
         global _nlp, _initializing_nlp
         if _initializing_nlp: return
         _initializing_nlp = True
-        nlp = spacy.load("en_core_web_md", vectors=False, disable=['parser', 'ner', 'tagger'])
+        if spacy.__version__[0] == '3':
+            nlp = spacy.load("en_core_web_md", disable=['parser', 'ner', 'tagger'])
+        else:
+            nlp = spacy.load("en_core_web_md", vectors=False, disable=['parser', 'ner', 'tagger'])
         for word in nlp.vocab:
             word.is_stop = False
 
