@@ -74,7 +74,7 @@ def load_snippet_collection(collection_name):
         for s in snippets:
             d = s.get("docstring_summary", s["docstring"])
             s[DESCRIPTION_FIELD] = d.split("\n")[0]
-            c = s.get("function", s["code"])
+            c = s.get("function", s.get("code",None))
             s[CODE_FIELD] = c
             s["language"] = lang
             s["id"] = s["url"]
@@ -91,8 +91,7 @@ def load_eval_dataset(dataset_name):
             snippets = load_snippet_collection(dataset_name)
         except:
             raise e
-        eval_data = [{"query": s[DESCRIPTION_FIELD], "relevant_ids": s["id"]} for s in snippets]
-        
+        eval_data = [{"query": s[DESCRIPTION_FIELD], "relevant_ids": [s["id"]]} for s in snippets]
     golden_snippets = defaultdict(set)
     for instance in eval_data:
         golden_snippets[instance["query"]].update(instance["relevant_ids"])

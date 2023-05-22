@@ -48,42 +48,12 @@ SNIPPET_COLLECTIONS = {
     "conala-curated": {
         "path": DATASETS_DIR/"conala-curated-snippets.jsonl",
         "url": DATASET_BASE_URL.format("conala-curated-snippets.jsonl.gz")
-    },
-    "codesearchnet-java": {
-        "path": DATASETS_DIR/"codesearchnet/java_dedupe_definitions_v2.pkl",
-        "url": "https://s3.amazonaws.com/code-search-net/CodeSearchNet/v2/java.zip",
-        "extract_at": DATASETS_DIR/"codesearchnet"
-    },
-    "codesearchnet-go": {
-        "path": DATASETS_DIR/"codesearchnet/go_dedupe_definitions_v2.pkl",
-        "url": "https://s3.amazonaws.com/code-search-net/CodeSearchNet/v2/go.zip",
-        "extract_at": DATASETS_DIR/"codesearchnet"
-    },
-    "codesearchnet-ruby": {
-        "path": DATASETS_DIR/"codesearchnet/ruby_dedupe_definitions_v2.pkl",
-        "url": "https://s3.amazonaws.com/code-search-net/CodeSearchNet/v2/ruby.zip",
-        "extract_at": DATASETS_DIR/"codesearchnet"
-    },
-     "codesearchnet-java-train": { # snippet collections are training/validation/test data for code-only models
-        "path_pattern": DATASETS_DIR/"codesearchnet/java/final/jsonl/train/*.jsonl.gz",
-        "url": "https://s3.amazonaws.com/code-search-net/CodeSearchNet/v2/java.zip",
-        "extract_at": DATASETS_DIR/"codesearchnet"
-    },
-    "codesearchnet-java-valid": {
-        "path_pattern": DATASETS_DIR/"codesearchnet/java/final/jsonl/valid/*.jsonl.gz",
-        "url": "https://s3.amazonaws.com/code-search-net/CodeSearchNet/v2/java.zip",
-        "extract_at": DATASETS_DIR/"codesearchnet"
-    },
-    "codesearchnet-java-test": {
-        "path_pattern": DATASETS_DIR/"codesearchnet/java/final/jsonl/test/*.jsonl.gz",
-        "url": "https://s3.amazonaws.com/code-search-net/CodeSearchNet/v2/java.zip",
-        "extract_at": DATASETS_DIR/"codesearchnet"
     }
     
 }
 
 def _add_codesearchnet_datasets(language):
-    url = f"https://s3.amazonaws.com/code-search-net/CodeSearchNet/v2/{language}.zip"
+    url = f"https://huggingface.co/datasets/code_search_net/resolve/main/data/{language}.zip"
     extract_at = DATASETS_DIR/"codesearchnet"
     path_all = DATASETS_DIR/f"codesearchnet/{language}_dedupe_definitions_v2.pkl"
     SNIPPET_COLLECTIONS[f"codesearchnet-{language}"] = {
